@@ -21,5 +21,5 @@ Route::get('/success','CartController@success')->name('success');
 
 Route::get('/register/success','Auth\RegisterController@success')->name('register-success');
 
-// Auth::routes();
+Auth::routes();
 
