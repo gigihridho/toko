@@ -10870,7 +10870,8 @@ footer p {
   text-align: center;
   background: green;
   color: #fefefe;
-  margin-left: -10px;
+  margin-left: -15px;
+  background: #29a867;
 }
 
 .navbar-fixed-top.scrolled {
