@@ -14,6 +14,7 @@
     @yield('prepend-style')
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
         <link href="/style/main.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.23/datatables.min.css"/>
     @yield('addon-style')
   </head>
 
@@ -23,23 +24,23 @@
               <!--Sidebar-->
               <div class="border-right" id="sidebar-wrapper">
                   <div class="sidebar-heading text-center">
-                      <img src="/images/dashboard-logo.svg" alt="logo" class="my-4">
+                      <img src="/images/admin.png" alt="logo" class="my-4" style="max-width: 150px;">
                   </div>
                   <div class="list-group list-group-flush">
-                      <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('admin-dashboard') }}" class="list-group-item list-group-item-action">
                           Dashboard
                       </a>
                       <a href="dashboard-products.html" class="list-group-item list-group-item-action">
-                        My Product
+                        Product
+                      </a>
+                      <a href="dashboard-products.html" class="list-group-item list-group-item-action">
+                        Categories
                       </a>
                       <a href="dashboard-transactions.html" class="list-group-item list-group-item-action">
                         Transaction
                       </a>
                       <a href="dashboard-settings.html" class="list-group-item list-group-item-action">
-                        Store Settings
-                      </a>
-                      <a href="dashboard-account.html" class="list-group-item list-group-item-action">
-                        My Account
+                        Users
                       </a>
                       <a href="index.html" class="list-group-item list-group-item-action">
                         Sign Out
@@ -66,28 +67,14 @@
                             Hi, Gigih
                           </a>
                           <div class="dropdown-menu">
-                            <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                            <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">Settings</a>
-                            <div class="dropdown-divider"></div>
                             <a href="/" class="dropdown-item">Logout</a>
                           </div>
-                        </li>
-                        <li class="nav-item">
-                          <a href="#" class="nav-link d-inline-block mt-2">
-                            <img src="/images/icon-cart-filled.svg" alt="Cart Filled">
-                            <div class="card-badge">3</div>
-                          </a>
                         </li>
                       </ul>
                       <ul class="navbar-nav d-block d-lg-none">
                         <li class="nav-item">
                           <a href="#" class="nav-link">
                             Hi, Gigih
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a href="{{ route('cart')}}" class="nav-link d-inline-block">
-                            Cart
                           </a>
                         </li>
                       </ul>
@@ -103,8 +90,9 @@
 
     <!-- Bootstrap core JavaScript -->
     @stack('prepend-script')
-    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.23/datatables.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
