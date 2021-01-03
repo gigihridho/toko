@@ -37,7 +37,7 @@
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link d-inline-block mt-2">
-                <img src="/images/cart-empty.svg" alt="Cart Empty">
+                <img src="/images/icon-cart-empty.svg" alt="Cart Empty">
               </a>
             </li>
           </ul>
