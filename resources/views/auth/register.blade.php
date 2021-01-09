@@ -125,71 +125,59 @@
 @endsection
 
 @push('addon-script')
-<script src="/vendor/vue/vue.js"></script>
-<script src="https://unpkg.com/vue-toasted"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
-    Vue.use(Toasted);
+    <script src="/vendor/vue/vue.js"></script>
+    <script src="https://unpkg.com/vue-toasted"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      Vue.use(Toasted);
+      var register = new Vue({
+        el: "#register",
+        mounted() {
+          AOS.init();
 
-    var register = new Vue({
-        el: '#register',
-        mounted(){
-            AOS.init();
-            this.$toasted.error(
-                "Maaf, email sudah terdaftar",
-                {
-                    position: "top-center",
-                    className: "rounded",
-                    duration: 1000
-                }
-            );
         },
         methods: {
-            checkForEmailAvailablility: function(){
+            checkForEmailAvailability: function () {
                 var self = this;
-                // Make a request for a user with a given ID
-                axios.get('{{ route('api-register-check') }}',{
-                    params: {
-                        email: this.email
-                    }
-                })
-                .then(function (response) {
-                    if (response.data == 'Available'){
-                        self.$toasted.error(
-                            "Email anda tersedia, Silakan lanjutkan langkah selanjutnya",
-                            {
-                                position: "top-center",
-                                className: "rounded",
-                                duration: 1000
-                            }
-                        );
-                        self.email_unavailable = false;
-                    } else {
-                        self.$toasted.error(
-                            "Maaf, email sudah terdaftar pada sistem",
-                            {
-                                position: "top-center",
-                                className: "rounded",
-                                duration: 1000
-
-                            }
-                        );
-                        self.email_unavailable = true;
-                    }
-                    // handle success
-                    console.log(response);
-                })
+                axios.get('{{ route('api-register-check') }}', {
+                        params: {
+                            email: this.email
+                        }
+                    })
+                    .then(function (response) {
+                        if(response.data == 'Available') {
+                            self.$toasted.show(
+                                "Email anda tersedia! Silahkan lanjut langkah selanjutnya!", {
+                                    position: "top-center",
+                                    className: "rounded",
+                                    duration: 1000,
+                                }
+                            );
+                            self.email_unavailable = false;
+                        } else {
+                            self.$toasted.error(
+                                "Maaf, tampaknya email sudah terdaftar pada sistem kami.", {
+                                    position: "top-center",
+                                    className: "rounded",
+                                    duration: 1000,
+                                }
+                            );
+                            self.email_unavailable = true;
+                        }
+                        // handle success
+                        console.log(response.data);
+                    })
             }
         },
         data() {
             return {
-                name: "Gigih Ridho",
-                email: "gigih@gmail.com",
+                name: "Angga Hazza Sett",
+                email: "kamujagoan@bwa.id",
                 is_store_open: true,
-                store_name: " ",
+                store_name: "",
                 email_unavailable: false
             }
         },
-    });
-</script>
+      });
+    </script>
 @endpush

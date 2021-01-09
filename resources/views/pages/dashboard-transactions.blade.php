@@ -24,7 +24,7 @@
                       </ul>
                       <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <a href="/dashboard-transactions-details.html" class="card card-list d-block">
+                            <a href="{{ route('dashboard-transaction-details') }}" class="card card-list d-block">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="/dashboard-transactions-details.html" class="card card-list d-block">
+                            <a href="{{ route('dashboard-transaction-details') }}" class="card card-list d-block">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="/dashboard-transactions-details.html" class="card card-list d-block">
+                            <a href="{{ route('dashboard-transaction-details') }}" class="card card-list d-block">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">
@@ -89,7 +89,7 @@
                             </a>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <a href="/dashboard-transactions-details.html" class="card card-list d-block">
+                            <a href="{{ route('dashboard-transaction-details') }}" class="card card-list d-block">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-1">

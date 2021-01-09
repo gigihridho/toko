@@ -29,19 +29,19 @@
                       <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">
                           Dashboard
                       </a>
-                      <a href="dashboard-products.html" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-product') }}" class="list-group-item list-group-item-action">
                         My Product
                       </a>
-                      <a href="dashboard-transactions.html" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-transaction') }}" class="list-group-item list-group-item-action">
                         Transaction
                       </a>
-                      <a href="dashboard-settings.html" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-settings-store') }}" class="list-group-item list-group-item-action">
                         Store Settings
                       </a>
-                      <a href="dashboard-account.html" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-settings-account') }}" class="list-group-item list-group-item-action">
                         My Account
                       </a>
-                      <a href="index.html" class="list-group-item list-group-item-action">
+                      <a href="{{ route('home') }}" class="list-group-item list-group-item-action">
                         Sign Out
                       </a>
                   </div>
@@ -63,7 +63,7 @@
                         <li class="nav-item dropdown">
                           <a href="#" class="nav-link" id="navbar-dropdown" role="button" data-toggle="dropdown">
                             <img src="/images/icon_user.png" alt="icon_user" class="rounded-circle mr-2 profile-picture">
-                            Hi, Gigih
+                            Hi, {{ Auth::user()->name }}
                           </a>
                           <div class="dropdown-menu">
                             <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
@@ -82,7 +82,7 @@
                       <ul class="navbar-nav d-block d-lg-none">
                         <li class="nav-item">
                           <a href="#" class="nav-link">
-                            Hi, Gigih
+                            Hi, {{ Auth::user()->name }}
                           </a>
                         </li>
                         <li class="nav-item">
