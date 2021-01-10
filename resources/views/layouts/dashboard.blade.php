@@ -26,26 +26,31 @@
                       <img src="/images/dashboard-logo.svg" alt="logo" class="my-4">
                   </div>
                   <div class="list-group list-group-flush">
-                      <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action" {{ (request()->is('dashboard')) ? 'active' : '' }}>
                           Dashboard
                       </a>
-                      <a href="{{ route('dashboard-product') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-product') }}" class="list-group-item list-group-item-action" {{ (request()->is('dashboard/products*')) ? 'active' : '' }}>
                         My Product
                       </a>
-                      <a href="{{ route('dashboard-transaction') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-transaction') }}" class="list-group-item list-group-item-action" {{ (request()->is('dashboard/transaction*')) ? 'active' : '' }}>
                         Transaction
                       </a>
-                      <a href="{{ route('dashboard-settings-store') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-settings-store') }}" class="list-group-item list-group-item-action" {{ (request()->is('dashboard/settings*')) ? 'active' : '' }}>
                         Store Settings
                       </a>
-                      <a href="{{ route('dashboard-settings-account') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('dashboard-settings-account') }}" class="list-group-item list-group-item-action" {{ (request()->is('dashboard/account*')) ? 'active' : '' }}>
                         My Account
                       </a>
-                      <a href="{{ route('home') }}" class="list-group-item list-group-item-action">
+                      <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       class="list-group-item list-group-item-action">
                         Sign Out
                       </a>
                   </div>
               </div>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
               <!--Page Content-->
               <div id="page-content-wrapper">
                 <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top"
@@ -74,8 +79,15 @@
                         </li>
                         <li class="nav-item">
                           <a href="#" class="nav-link d-inline-block mt-2">
-                            <img src="/images/icon-cart-filled.svg" alt="Cart Filled">
-                            <div class="card-badge">3</div>
+                            @php
+                                $carts = \App\Cart::where('users_id', Auth::user()->id)->count();
+                            @endphp
+                            @if ($carts > 0)
+                                <img src="/images/icon-cart-filled.svg" alt="">
+                                <div class="card-badge">{{ $carts  }}</div>
+                            @else
+                                <img src="/images/icon-cart-empty.svg" alt="Cart Empty">
+                            @endif
                           </a>
                         </li>
                       </ul>

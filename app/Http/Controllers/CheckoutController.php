@@ -48,6 +48,8 @@ class CheckoutController extends Controller
                 'code' => $trx
             ]);
         }
+
+        Cart::where('users_id',Auth::user()->id)->delete();
         //konfig midtrans
 
         Config::$serverKey = config('services.midtrans.serverKey');
