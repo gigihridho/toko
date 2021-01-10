@@ -22,8 +22,10 @@ class CheckoutController extends Controller
         $user->update($request->except('total_price'));
 
         //proses checkout
-        $code = 'STORE-' . mt_rand(00000,99999);
-        $carts = Cart::with(['product','user'])->where('users_id',Auth::user()->id)->get();
+        $code = 'STORE-' . mt_rand(0000,9999);
+        $carts = Cart::with(['product','user'])
+                ->where('users_id',Auth::user()->id)
+                ->get();
 
         $transaction = Transaction::create([
             'users_id' => Auth::user()->id,
@@ -54,20 +56,20 @@ class CheckoutController extends Controller
         Config::$is3ds = config('services.midtrans.is3ds');
 
         //buat array to send midtrans
-        $midtrans = [
-            'transaction_detail' => [
+        $midtrans = array(
+            'transaction_details' => array(
                 'order_id' => $code,
                 'gross_amount' => (int) $request->total_price,
-            ],
-            'customer_detail' => [
+            ),
+            'customer_details' => array(
                 'first_name' => Auth::user()->name,
                 'email' => Auth::user()->email,
-            ],
-            'enabled_payments' => [
+            ),
+            'enabled_payments' => array(
                 'gopay', 'bni_va','bank_transfer'
-            ],
+            ),
             'vtweb' => []
-        ];
+        );
         try {
             // Get Snap Payment Page URL
             $paymentUrl = Snap::createTransaction($midtrans)->redirect_url;
