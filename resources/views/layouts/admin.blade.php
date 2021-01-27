@@ -45,8 +45,12 @@
                       <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/user*')) ? 'active' : '' }}">
                         Users
                       </a>
-                      <a href="index.html" class="list-group-item list-group-item-action">
+                      <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        class="list-group-item list-group-item-action">
                         Sign Out
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                       </a>
                   </div>
               </div>

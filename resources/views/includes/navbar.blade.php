@@ -78,7 +78,6 @@
               </a>
             </li>
           </ul>
-
           @endauth
         </div>
       </div>
